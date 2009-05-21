@@ -1,0 +1,68 @@
+Virtuoso RDFizer Mapper Scripts
+===============================
+
+Copyright (C) 1998-2009 OpenLink Software <vos.admin@openlinksw.com>
+
+This repository is a subset of the OpenLink Virtuoso Open-Source Edition main 
+tree, opened for active community development.
+
+
+Background
+==========
+
+The RDFizer (sponger) is a component of OpenLink Virtuoso for extracting
+metadata in RDF form, from existing data silos. It does this with several
+generic translators (targetting RDFa, GRDDL, eRDF), parsers for standard
+formats (RSS, Atom) and scrapers for well-known websites (eg Amazon, Digg,
+Flickr, Ebay, Technorati and many more). All these extractors - known as
+cartridges - are implemented primarily in the form of XSLT stylesheets.
+
+
+Development Notes
+=================
+
+The aim of developing these XSLT stylesheets is to maximize the quality of
+output RDF data. As such, for a given domain, all the obvious data should be
+converted, but also mapped onto the greatest number of obvious well-known
+ontologies possible.
+
+For example, in the case of a flickr page displaying a photograph, in addition
+to any flickr-specific ontology or namespace, the title and description can be
+mapped directly to Dublin Core's (DC)'s title and description predicates.
+Further, the username can be expressed using either FOAF and/or SIOC, possibly
+with some rdfs:seeAlso triples; the structure of image "Sets" and "Collections"
+and group "Pools" can be expressed further using SIOC.
+
+
+License
+=======
+
+The bulk of OpenLink Virtuosoo Open-Source Edition, including these RDFizer
+mapping scripts, is licensed under the terms of the GNU General Public License
+v2 (only).
+
+
+Contact
+=======
+
+In case of questions, please contact us either on the virtuoso-users mailing
+list (public) or using github{@}openlinksw.com (direct).
+
+
+References
+==========
+
+OpenLink Virtuoso:
+http://virtuoso.openlinksw.com/
+
+Open-Source Edition:
+http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/
+
+Virtuoso Sponger:
+http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/VirtSponger
+
+Licensing Terms:
+http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/VOSLicense
+
+Mailing Lists:
+http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/VOSMailingLists
