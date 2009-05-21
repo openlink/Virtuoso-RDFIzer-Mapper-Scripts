@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.0" xml:lang="en">
+<?vsp
+
+   declare _G, _S, odd_position any;
+   declare project_home_page any;
+   declare page_resource_uri, proxy_iri, proxy_iri2, rdf_link, label, true_label, _subject any;
+   declare arr, data, meta, h1, h2, inx, gr, host, pars any;
+   declare _graph, _sub varchar;
+   declare do_sponge, proxy_iri_fn int;
+
+   connection_set ('ns_ctr', 1); /* for unknown xmlns to print in RDFa */
+   proxy_iri_fn := get_keyword ('p', params, null);
+   host := http_request_header (http_request_header (), 'Host');
+   gr := get_keyword ('g', params, '');
+   arr := rfc1808_parse_uri (gr);
+   if (arr[0] = '' and arr[1] = '' and arr[2] <> '')
+     gr := 'http://' || gr;
+   pars := split_and_decode (arr[4]);
+   if (isarray (pars) and get_keyword ('p', pars, '') = proxy_iri_fn)
+     proxy_iri_fn := null;
+   connection_set ('proxy_iri_fn', proxy_iri_fn);
+
+   project_home_page := gr;
+   project_home_page := replace (project_home_page, '%23', '#');
+   _G := project_home_page;
+
+   page_resource_uri := get_keyword ('res', params);
+   do_sponge := 0;
+   if (page_resource_uri is null)
+     {
+       do_sponge := 1;
+       page_resource_uri := gr;
+     }
+   page_resource_uri := replace (page_resource_uri, '%23', '#');
+   _S := page_resource_uri;
+
+   if (proxy_iri_fn is null)
+   {
+     proxy_iri := DB.DBA.RDF_SPONGE_PROXY_IRI (page_resource_uri, '', '');
+     proxy_iri2 := DB.DBA.RDF_SPONGE_PROXY_IRI (page_resource_uri);
+   }
+   else
+   {
+     proxy_iri := call (proxy_iri_fn || '_get_proxy_iri') (page_resource_uri);
+     proxy_iri2 := call (proxy_iri_fn || '_get_proxy_iri') (page_resource_uri);
+   }
+   arr := rfc1808_parse_uri (proxy_iri);
+   if (arr [1] like 'localhost%')
+     arr [1] := 'demo.openlinksw.com';
+   proxy_iri := DB.DBA.vspx_uri_compose (arr);
+
+   arr := rfc1808_parse_uri (_G);
+   if (arr[2] = '/' and DB.DBA.vspx_uri_compose (arr) <> _G)
+     arr[2] := '';
+   arr [5] := '';
+   _G := DB.DBA.vspx_uri_compose (arr);
+
+   if (_S not like 'nodeID://%' and do_sponge)
+     {
+       DB.DBA.EXEC_AS (sprintf ('sparql define get:soft "soft" SELECT * from <%S> where { ?x ?y ?z . }', _G), 'SPARQL');
+       DB.DBA.VT_INC_INDEX_DB_DBA_RDF_OBJ ();
+       commit work;
+     }
+   else if (_S like 'nodeID://%')
+     {
+       -- blank node is subject
+       exec (sprintf ('sparql define input:storage "" select ?g where { graph ?g { <%S> ?p ?o . }} limit 1', _S),
+	  null, null, vector (), 0, meta, data);
+        if (length (data))
+	  _G := data[0][0];
+     }
+
+   exec (sprintf ('sparql ask where { graph <%S> { <%S> ?p ?o }}', _G, _S), null, null, vector (), 0, meta, data);
+   if (not length (data))
+     {
+        exec (sprintf ('sparql select ?s where { graph <%S> { ?s ?p ?o filter regex (?s, "%S#.*") }}', _G, _S),
+	  null, null, vector (), 0, meta, data);
+        if (length (data))
+          {
+            _S := data[0][0];
+            page_resource_uri := _S;
+          }
+     }
+
+   odd_position := 0;
+   set http_charset='utf-8';
+   set isolation = 'uncommitted';
+   http_header ('Cache-Control: no-cache, must-revalidate\r\nPragma: no-cache\r\n');
+   --http_header (sprintf ('Expires: %s\r\n', date_rfc1123 (dateadd ('day', 1, now ()))));
+   label := ''; _subject := '';
+   label := rdfdesc_label (_S, _G, lines);
+   label := cast (label as varchar);
+   true_label := label;
+
+   exec (sprintf ('sparql prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix dc: <http://purl.org/dc/elements/1.1/>
+	select ?o where { graph <%S> { <%S> rdfs:comment ?o } }', _G, _S), null, null, vector (), 0, meta, data);
+   if (length (data)) _subject := data[0][0];
+
+   rdf_link := sprintf ('/sparql?default-graph-uri=%U&query=%U', _G, sprintf ('DESCRIBE <%s>',_S));
+
+  declare __res_desc varchar;
+  __res_desc := rdfdesc_uri_curie(page_resource_uri);
+  if (not length (label))
+    label := page_resource_uri;
+?>
+
+<!-- header -->
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+    <base href="http://<?V http_request_header (lines, 'Host') ?><?V http_map_get ('domain') ?>/" />
+    <title>About: <?vsp http (sprintf ('%s', label)); ?></title>
+    <link rel="alternate" type="application/rdf+xml" href="<?=rdf_link?>" title="RDF" />
+    <link rel="stylesheet" type="text/css" href="statics/style_w.css" />
+    <link href="statics/highlighter.css" type="text/css" rel="stylesheet" charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+    <script type="text/javascript" src="statics/script.js"></script>
+</head>
+<body onload="init();" about="<?V page_resource_uri ?>">
+    <div id="header">
+      <div id="hd_l">
+	  <h1 id="title">About: <a href="<?= case when page_resource_uri like 'nodeID://%' then rdfdesc_http_url (page_resource_uri) else proxy_iri2 end ?>"><?vsp http (sprintf ('%s', label)); ?></a></h1>
+        <div id="homelink">
+        </div>
+        <div class="page-resource-uri">
+	   An Entity in Data Space: <a href="http://<?V host ?>"><?V host ?></a>
+        </div>
+      </div> <!-- hd_l -->
+      <div id="hd_r">
+        <a href="<?=rdf_link?>" title="RDF data"><img src="statics/sw-cube.png" alt="[RDF Data]" /></a>
+      </div> <!-- hd_r -->
+    </div> <!-- header -->
+    <div id="content">
+
+      <p><?vsp http (sprintf ('%s', _subject)); ?></p>
+
+<!-- proptable -->
+      <table class="description"><tr><th class="property">Property</th><th class="value">Value</th></tr>
+
+<?vsp
+      exec (sprintf ('select "p" as PRED from (sparql select distinct ?p where { graph <%S> { <%S> ?p ?o } }) sp order by 1', _G, _S),
+		null, null, vector (), 0, null, null, h1);
+      while (0 = exec_next (h1, null, null, data))
+	{
+           declare PRED any;
+	   pred := data[0];
+	   rdfdesc_http_print_l (PRED, odd_position);
+	   exec (sprintf ('sparql select ?o where { graph <%S> { <%S> <%S> ?o } } limit 300', _G, _S, PRED),
+		null, null, vector (), 0, null, null, h2);
+	   while (0 = exec_next (h2, null, null, data))
+	      {
+                declare OBJECT any;
+		OBJECT := data [0];
+		rdfdesc_http_print_r (OBJECT, PRED, true_label, 1);
+	      }
+	   exec_close (h2);
+
+	   http ('</ul></td></tr>');
+	}
+      exec_close (h1);
+      --goto skip_rev;
+      exec (sprintf ('select "p" as PRED from (sparql select distinct ?p where { graph <%S> { ?o ?p <%S> } }) sp order by 1', _G, _S),
+		null, null, vector (), 0, null, null, h1);
+      inx := 0;
+      while (0 = exec_next (h1, null, null, data))
+	{
+           declare PRED any;
+	   pred := data[0];
+	   inx := inx + 1;
+	   rdfdesc_http_print_l (PRED, odd_position, 1);
+	   exec (sprintf ('sparql select ?s where { graph <%S> { ?s <%S> <%S> } } limit 300', _G, PRED, _S),
+		null, null, vector (), 0, null, null, h2);
+	   while (0 = exec_next (h2, null, null, data))
+	      {
+                declare OBJECT any;
+		OBJECT := data [0];
+		rdfdesc_http_print_r (OBJECT, PRED, true_label, 0);
+	      }
+	   exec_close (h2);
+
+	   http ('</ul></td></tr>');
+	}
+      exec_close (h1);
+skip_rev:
+       if  (odd_position = 0)
+	 {
+	    http ('<tr><td colspan="2"><p>No further information is available.</p></td></tr>');
+	 }
+?>
+      </table>
+    </div> <!--  #content -->
+<!-- footer -->
+    <div id="footer">
+      <div id="ft_t">
+        Explore using:
+        <a href="/ode/?uri=<?vsp http_url (page_resource_uri); ?>">OpenLink Data Explorer</a> |
+        <a href="http://dataviewer.zitgist.com/?uri=<?vsp http_url (proxy_iri); ?>">Zitgist Data Viewer</a> |
+        <a href="http://beckr.org/marbles?uri=<?vsp http_url (proxy_iri); ?>">Marbles</a> |
+        <a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/?browse_uri=<?vsp http_url (proxy_iri); ?>">DISCO</a> |
+        <a href="http://dig.csail.mit.edu/2005/ajar/release/tabulator/0.8/tab.html?uri=<?vsp http_url (proxy_iri); ?>" >Tabulator</a>
+        &nbsp; &nbsp; Raw Data in:
+        <a href="<?=rdf_link || '&output=n3'?>">N3</a> |
+        <a href="<?=rdf_link || '&output=rdf'?>">RDF/XML</a>
+        &nbsp; &nbsp;<a href="http://ode.openlinksw.com/">About</a>&nbsp; &nbsp;
+      </div> <!-- #ft_t -->
+      <div id="ft_b">
+        <a href="http://virtuoso.openlinksw.com" title="OpenLink Virtuoso"><img class="powered_by" src="statics/virt_power_no_border.png" alt="Powered by OpenLink Virtuoso" /></a>
+        <a href="http://linkeddata.org/"><img alt="This material is Open Knowledge" src="statics/LoDLogo.gif" style="border-width:0"  /></a> &nbsp;
+        <a href="http://dbpedia.org/sparql"><img alt="W3C Semantic Web Technology" src="statics/sw-sparql-blue.png" style="border-width:0" /></a> &nbsp;  &nbsp;
+        <a href="http://www.opendefinition.org/"><img alt="This material is Open Knowledge" src="statics/od_80x15_red_green.png" style="border-width:0" /></a>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.
+      </div> <!-- #ft_b -->
+    </div> <!-- #footer -->
+
+ <!--script type="text/javascript">
+     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script>
+ <script type="text/javascript">
+     var pageTracker = _gat._getTracker("UA-139779-13");
+     pageTracker._initData();
+     pageTracker._trackPageview();
+ </script-->
+
+ </body>
+</html>

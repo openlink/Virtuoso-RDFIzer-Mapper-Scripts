@@ -1,0 +1,2164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+    <!ENTITY link 'http://www.xbrl.org/2003/linkbase#'>
+    <!ENTITY xlink 'http://www.w3.org/1999/xlink#'>
+    <!ENTITY xbrli 'http://www.xbrl.org/2003/instance#'>
+    <!ENTITY msft '#'>
+    <!ENTITY mem 'http://www.microsoft.com/xbrl/mem#'>
+    <!ENTITY usfr-seccert 'http://www.xbrl.org/us/fr/rpt/seccert/2005-02-28#'>
+    <!ENTITY usfr-mda 'http://www.xbrl.org/us/fr/rpt/mda/2005-02-28#'>
+    <!ENTITY usfr-ar 'http://www.xbrl.org/us/fr/rpt/ar/2005-02-28#'>
+    <!ENTITY usfr-pte 'http://www.xbrl.org/us/fr/common/pte/2005-02-28#'>
+    <!ENTITY ref 'http://www.xbrl.org/2004/ref#'>
+    <!ENTITY usfr-mr 'http://www.xbrl.org/us/fr/rpt/mr/2005-02-28#'>
+    <!ENTITY us-gaap-ci 'http://www.xbrl.org/us/fr/gaap/ci/2005-02-28#'>
+    <!ENTITY xml 'http://www.w3.org/XML/1998/namespace#'>
+]>
+<rdf:RDF xmlns:xo="http://rhizomik.upf.edu/redefer/xsl/xsd2owl-functions.xsl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:link="http://www.xbrl.org/2003/linkbase#" xmlns:xlink="http://www.w3.org/1999/xlink#" xmlns:xbrli="http://www.xbrl.org/2003/instance#" xmlns:msft="#" xmlns:mem="http://www.microsoft.com/xbrl/mem#" xmlns:usfr-seccert="http://www.xbrl.org/us/fr/rpt/seccert/2005-02-28#" xmlns:usfr-mda="http://www.xbrl.org/us/fr/rpt/mda/2005-02-28#" xmlns:usfr-ar="http://www.xbrl.org/us/fr/rpt/ar/2005-02-28#" xmlns:usfr-pte="http://www.xbrl.org/us/fr/common/pte/2005-02-28#" xmlns:ref="http://www.xbrl.org/2004/ref#" xmlns:usfr-mr="http://www.xbrl.org/us/fr/rpt/mr/2005-02-28#" xmlns:us-gaap-ci="http://www.xbrl.org/us/fr/gaap/ci/2005-02-28#">
+   <owl:Ontology rdf:about="">
+      <rdfs:comment>OWL ontology for XBRL</rdfs:comment>
+      <owl:imports rdf:resource="http://www.xbrl.org/2003/instance#"/>
+      <owl:imports rdf:resource="http://www.xbrl.org/2003/linkbase#"/>
+      <owl:imports rdf:resource="http://www.xbrl.org/2004/ref#"/>
+      <owl:imports rdf:resource="http://www.xbrl.org/us/fr/rpt/mda/2005-02-28#"/>
+      <owl:imports rdf:resource="http://www.xbrl.org/us/fr/common/pte/2005-02-28#"/>
+      <owl:imports rdf:resource="http://www.xbrl.org/us/fr/gaap/ci/2005-02-28#"/>
+      <owl:imports rdf:resource="http://www.microsoft.com/xbrl/mem#"/>
+   </owl:Ontology>
+   <rdf:Property rdf:about="GoodwillNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GoodwillOtherChanges">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CoverInformation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AggregateMarketValueNonAffiliateCommonStock">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AcquiredInProcessTechnology">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AdditionalPaidCapitalStructuredRepurchasesPriceDifferential">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="InvestmentSubcategory">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentCategoryName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubCategoryName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentCostBasis"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentUnrealizedGain"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentUnrealizedLoss"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentRecordedBasis"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentCashAndEquivalents"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentShortTermInvestments"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentEquityAndOtherInvestments"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="InvestmentCategoryName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentSubCategoryName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentEquityAndOtherInvestments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentShortTermInvestments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentCashAndEquivalents">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentRecordedBasis">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentUnrealizedLoss">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentUnrealizedGain">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentCategoryCostBasis">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="InvestmentWithUnrealizedLossesSubcategory">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentCategoryName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubCategoryName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubcategoryFairValueLessThanTwelveMonths"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubcategoryUnrealizedLossesLessThanTwelveMonths"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubcategoryFairValueTwelveMonthsOrGreater"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubcategoryUnrealizedLossesTwelveMonthsOrGreater"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentSubcategoryFairValue"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#InvestmentUnrealizedLoss"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="InvestmentSubcategoryFairValueLessThanTwelveMonths">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentSubcategoryUnrealizedLossesLessThanTwelveMonths">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentSubcategoryFairValueTwelveMonthsOrGreater">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentSubcategoryUnrealizedLossesTwelveMonthsOrGreater">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentSubcategoryFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AdditionalPaidCapitalStructuredStockRepurchase">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AdditionalPaidCapitalTaxBenefitExerciseStockOptions">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AnalystsContactInfo">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BalanceSheetEquityRetainedEarningsOtherComprehensiveIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BasisOfPresentation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentCostBasis">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BoardCandidateName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BoardCandidateSharesWithheld">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="BoardElectionTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#BoardCandidateName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#BoardCandidateSharesFor"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#BoardCandidateSharesWithheld"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="BusinessOutlook">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BusinessSegmentsReconciliation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ChangeDeferredRevenueRecognitionUnearnedRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ChangeDeferredRevenueUnearnedRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ChangesOtherLongTermAssets">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ChangesOtherLongTermLiabilities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetProceedsFromSecuritiesLending">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesDerivativeInstruments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesDerivativeInstruments_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesEquityDerivatives">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesEquityDerivatives_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesCommodityDerivatives">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesCommodityDerivatives_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesInterestRateDerivatives">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesInterestRateDerivatives_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesForeignExchangeDerivatives">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesForeignExchangeDerivatives_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BoardCandidateSharesFor">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockRepurchasedAdditionalPaidCapital">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockRepurchasedExpenseEquityNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockRepurchasedRetainedEarnings">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockRepurchasedSharesEquityNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockRepurchasedValueEquityNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ContingenciesLitigationDescription">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ContingenciesLitigationName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="ContingenciesLitigationTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ContingenciesLitigationName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ContingenciesLitigationDescription"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="ControlsAndProceduresDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ConversionPreferredStock">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CorporateLevelOperatingIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostOfRevenueDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostOfRevenueDiscussionAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostRevenueExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostRevenueExpenses_delta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostRevenueExpenses_Div_OperatingRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostRevenueExpenses_Div_Revenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SecuritiesPledgedAsCollateral">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CostRevenueExpenses_OneYearDelta_Div_CostRevenueExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PaidInCapitalCumulativeSFAS123RetroactiveAdjustments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsCumulativeSFAS123RetroactiveAdjustments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DefaultsUponSeniorSecurities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredRevenueAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DilutiveEffectOfEmployeeStockOptionsAndAwards">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendsInterestIncomeExpenseNet">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendsInterestIncomeExpenseNet_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DocumentNameSubTitle">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EarningsPerShareDetails">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EarningsPerShareMethod">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EarningsPerShareNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharesExcludedFromCalculationOfDilutedEPS">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsExcludedFromCalculationOfDilutedEPS">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EarningsRelease">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EditorsNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ExhibitDescription">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ExhibitName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Exhibits">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="ExhibitTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExhibitName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExhibitDescription"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <owl:ObjectProperty rdf:about="FilingType">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range>
+         <owl:Class/>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="ForwardLookingStatements">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpenses_Div_Revenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpenses_Div_Revenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpenses_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpenses_OneYearDelta_Div_GeneralAdministrativeExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpensesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GeneralAdministrativeExpensesDiscussionAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentIncomeAndOtherDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AvailableInformation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IssueOrUncertaintyExplanation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IssueOrUncertaintyName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IssuesAndUncertaintiesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="IssuesAndUncertaintiesDiscussionTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IssueOrUncertaintyName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IssueOrUncertaintyExplanation"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="LegalProceedings">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Properties">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnresolvedStaffComments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LocationCityState">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetRecognizedGainsLossesOnInvestments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetRecognizedGainsLossesOnInvestments_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OffBalanceSheetArrangementsDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OffBalanceSheetArrangementsAndContractualObligationsDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingProfit_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingProfit_OneYearDelta_Div_OperatingProfit">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingProfitAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingResultsDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingRevenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingRevenue_OneYearDelta_Div_OperatingRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Other8KInformation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherInformation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherOperatingIncomeLoss">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PressContactInfo">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProFormaEarningsPerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProposalSharesAbstain">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProposalSharesAgainst">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProposalSharesBrokerNonVote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProposalSharesFor">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProposalText">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="ProposalTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ProposalText"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#BoardElectionTuple"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#VoteTuple"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="RawMaterialsWorkProcess">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ReclassificationPutWarrantObligations">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ReleaseDate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RepurchasesOfPutWarrants">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentDiscussionAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentExpense_Div_Revenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentExpense_Div_Revenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentExpense_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ResearchAndDevelopmentExpense_OneYearDelta_Div_ResearchAndDevelopmentExpense">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeCumulativeEffectAccountingChange">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstruments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstrumentsAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedInvestmentGainsLosses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherComprehensiveIncomeDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccumulatedOtherComprehensiveIncomeDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstrumentsUnrealizedGainsLossesNetOfTax">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstrumentsUnrealizedGainsLossesTaxEffect">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstrumentsReclassificationNetOfTax">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedInvestmentGainsLossesAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedHoldingGainsLossesNetOfTax">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedHoldingGainsLossesTaxEffect">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedHoldingGainsLossesReclassificationNetOfTax">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetGainsLossesDerivativeInstrumentsReclassificationTaxEffect">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeNetUnrealizedHoldingGainsLossesReclassificationTaxEffect">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsImmaterialPoolingInterests">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SalesMarketingDiscussionAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SalesOfPutWarrants">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SalesRepurchasesPutWarrants">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SegmentRevenueOperatingIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsComprehensiveIncomeTranslationAdjustmentsOther">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SellingMarketingExpenses_Div_Revenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SellingMarketingExpenses_Div_Revenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SellingMarketingExpenses_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SellingMarketingExpenses_OneYearDelta_Div_SellingMarketingExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SellingMarketingExpensesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DistributionSalesMarketingDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CustomersDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CompetitionDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StatementStockholdersEquityRetainedEarningsOtherComprehensiveIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccumulatedNetGainsLossesOnDerivativeInstruments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccumulatedNetUnrealizedInvestmentGainsLosses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccumulatedTranslationAdjustmentsAndOther">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ComprehensiveIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LegalSettlementsAndContingentLiabilities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensation_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationAfterTax">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationAfterTax_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationAfterTaxPerDilutedShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfCostOfRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfGeneralAdministrativeExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfGeneralAdministrativeExpenses_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfResearchDevelopmentExpense">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FinancialHighlights">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfResearchDevelopmentExpense_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfSellingMarketingExpense_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationPortionOfSellingMarketingExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedPortionOfCostOfRevenue_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockOptionIncomeTaxBenefitsDeficiencies">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchaseAveragePricePaidPerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchaseMaximumValueThatMayYetBePurchased">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchases">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchaseShares">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchaseSharesPubliclyAnnounced">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="StockRepurchaseTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#StockRepurchaseShares"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#StockRepurchaseAveragePricePaidPerShare"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#StockRepurchaseSharesPubliclyAnnounced"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#StockRepurchaseMaximumValueThatMayYetBePurchased"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="SubmissionOfMattersToAVoteOfSecurityHolders">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SummaryResults">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TrademarkInfoFinancialHighlights">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TrademarkInfoSummaryResults">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnearnedRevenueDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnearnedRevenueFromOther">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnearnedRevenueFromUndeliveredElements">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnearnedRevenueFromVolumeLicensingPrograms">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="UnregisteredSalesOfEquitySecurities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ValueAtRisk">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ValueAtRiskAverage">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ValueAtRiskHigh">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ValueAtRiskLow">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ValueAtRiskRiskCategory">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="ValueAtRiskTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ValueAtRiskRiskCategory"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ValueAtRisk"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ValueAtRiskAverage"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ValueAtRiskHigh"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ValueAtRiskLow"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <owl:ObjectProperty rdf:about="VoteTuple">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ProposalSharesFor"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ProposalSharesAgainst"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ProposalSharesAbstain"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ProposalSharesBrokerNonVote"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="WebcastDetails">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SegmentHead">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Client">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ST">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OSB">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IW">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MBS">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MBD">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MSN">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MED">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="HE">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EDD">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Corporate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Other">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherSegments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="Reconciliation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ReportingViewpoint">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ManagementView">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="GaapView">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.microsoft.com/xbrl/mem#memberItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OperatingExpensesNetOfStockBasedCompensation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="RetainedEarningsNetOfAccumulatedComprehensiveIncome">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockPaidInCapital">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockPaidInCapitalIncreaseDecreaseAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CashDividendsPerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IncomeStatementGeneralDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AssetsLiabilityEquityGeneralDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StatementStockholdersEquityGeneralDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StatementCashFlowsIndirectGeneralDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonEquityAndRelatedMatters">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockRepurchasedByPeriod">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="DividendDeclaration">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#DividendApprovalDate"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#DividendDeclarationPerShare"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#DividendRecordDate"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#DividendDeclarationAmountPaid"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#DividendPaidDate"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="DividendPaidDate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendRecordDate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendApprovalDate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ContractualObligationsDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ContractualObligations">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ContractualObligationsTotal">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ConstructionCommitments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LeaseObligationsCapital">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LeaseObligationsOperating">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LeaseObligations">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccountingPoliciesSalesAndMarketingExpensePolicy">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AllowanceForDoubtfulAccountsNote">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DoubtfulAccountsChargedToCostsAndExpenses">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccountingPoliciesIntangibleAssets">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccountingPoliciesGoodwill">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="IntangibleAssetsFiniteLivedClass">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsFiniteLivedClassName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsFiniteLivedClassGross"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsFiniteLivedClassAccumulatedAmortization"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsFiniteLivedClassNet"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="IntangibleAssetsFiniteLivedClassName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsFiniteLivedClassGross">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsAcquiredAmount">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsAcquiredWeightedAverageLife">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsFiniteLivedClassAccumulatedAmortization">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsFiniteLivedClassNet">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="IntangibleAssetsAcquiredClass">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsAcquiredClassName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsAcquiredClassAmount"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#IntangibleAssetsAcquiredClassWeightedAverageLife"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="IntangibleAssetsAcquiredClassName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsAcquiredClassAmount">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsAcquiredClassWeightedAverageLife">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FurnitureAndEquipment">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BuildingsAndImprovements">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ComputerSoftwareAndEquipment">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProvisionForIncomeTaxesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntangibleAssetsNoteDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IncomeBeforeIncomeTaxesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EffectiveTaxRateDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsImpairedInvestments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsStockBasedCompensationExpense">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsOtherRevenueItems">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsOtherExpenseItems">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TaxRateReconciliationIRSExaminationSettlement">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TaxRateReconciliationExtraterritorialIncomeExclusion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TaxRateReconciliationForeignEarningsTaxedAtLowerRates">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxLiabilitiesInternationalEarnings">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DeferredTaxAssetsUnearnedRevenue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendDeclarationPerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="DividendDeclarationAmountPaid">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommonStockPricePerShareHigh">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="CommonStockPricePerShareRange">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#CommonStockPricePerShareHigh"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#CommonStockPricePerShareLow"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="CommonStockPricePerShareLow">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationStockAwards">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationSharedPeformanceStockAwards">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsGranted">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsWeightedAverageNetPresentValuePerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsGrantedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsVestedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsVested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsCancelled">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsCancelledWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsGranted">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsNonvested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsNonvestedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsGrantedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsForfeited">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsForfeitedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsWeightedAverageNetPresentValuePerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsNonvested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockAwardsNonvestedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsVested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsVestedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsCancelled">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsCancelledWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsForfeited">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SharedPerformanceStockAwardsForfeitedWeightedAverageGrantDateFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="IntrinsicValueStockOptionsExercisedTotal">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueStockOptionsVestedTotal">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueStockAwardsVested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueSharedPerformanceStockAwardsVested">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptions">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsWeightedAverageExpectedLifeInYears">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsDividendPerShare">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsDividendPerShareMinimum">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsDividendPerShareMaximum">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsRiskFreeInterestRate">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsRiskFreeInterestRateMinimum">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsRiskFreeInterestRateMaximum">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="FairValueOfOptionsVolatility">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstanding">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingPricePerShareLow">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockPurchasePlansSharesPurchasedForPlan">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockPurchasePlansWeightedAveragePricePaidForSharesPurchased">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingPricePerShareHigh">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingPricePerShareWeightedAverage">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingWeightedAverageRemainingContractualTerm">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsOutstandingAggregateIntrinsicValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PricePerShareLow">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PricePerShareHigh">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PricePerShareWeightedAverage">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NumberOfShares">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="EmployeeStockOptionsChange">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsChangesKind"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#NumberOfShares"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#PricePerShareLow"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#PricePerShareHigh"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#PricePerShareWeightedAverage"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <owl:ObjectProperty rdf:about="EmployeeStockOptionsBalance">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstanding"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingPricePerShareLow"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingPricePerShareHigh"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingPricePerShareWeightedAverage"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingWeightedAverageGrantDateFairValue"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingWeightedAverageRemainingContractualTerm"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsOutstandingAggregateIntrinsicValue"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="EmployeeStockOptionsChangesKind">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="EmployeeStockOptionsExercisable">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsExercisableShares"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsExercisableWeightedAverageExercisePrice"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsExercisableWeightedAverageRemainingContractualTerm"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#EmployeeStockOptionsExercisableAggregateIntrinsicValue"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="EmployeeStockOptionsExercisableShares">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#sharesItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsExercisableWeightedAverageExercisePrice">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#decimalItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsExercisableWeightedAverageRemainingContractualTerm">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#pureItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionsExercisableAggregateIntrinsicValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationNoteOther">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="CommitmentsFutureMinimumRentals">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="BusinessSegmentsContingencies">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="InvestmentsNoteMaturitiesOfDebtSecurities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MaturitiesOfDebtSecuritiesCostBasis">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="MaturitiesOfDebtSecuritiesEstimatedFairValue">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherLongTermLiabilities">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="TaxContingencies">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LegalContingencies">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProductWarrantyContingencies">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProductWarrantyLiability">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProductWarrantyLiabilityAccrualForWarrantiesIssued">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProductWarrantyLiabilityAdjustmentToPreexistingWarranties">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ProductWarrantyClaimSettlements">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOptionTransferProgram">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ExecutiveOfficerAge">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#positiveIntegerItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ExecutiveOfficerName">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ExecutiveOfficerPosition">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="ExecutiveOfficer">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#tuple"/>
+      <rdfs:range>
+         <owl:Class>
+            <rdfs:subClassOf>
+               <owl:Class>
+                  <owl:intersectionOf rdf:parseType="Collection">
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExecutiveOfficerName"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExecutiveOfficerAge"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExecutiveOfficerPosition"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="#ExecutiveOfficerDescription"/>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+                     </owl:Restriction>
+                  </owl:intersectionOf>
+               </owl:Class>
+            </rdfs:subClassOf>
+            <rdfs:subClassOf>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="#id"/>
+                  <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+               </owl:Restriction>
+            </rdfs:subClassOf>
+         </owl:Class>
+      </rdfs:range>
+   </owl:ObjectProperty>
+   <rdf:Property rdf:about="ExecutiveOfficerDescription">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="PurchaseCommitments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherLongTermLiabilitiesDiscussion">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <owl:DatatypeProperty rdf:about="member"/>
+   <rdf:Property rdf:about="AcquisitionsPurchaseAccountingAdjustments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationExcessTaxBenefitOperations">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="StockBasedCompensationExcessTaxBenefitFinancing">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EarningsLossesEquityInvestments_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NonoperatingAssetRelatedIncome_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NetGainsLossesDerivativeInstrumentsAbstract">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="SecuritiesLendingPayable">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ManagementResponsibilityForFinancialStatements">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="ChangeFinancialReportingStructure">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOwnershipPlanIncomeTaxBenefit">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="EmployeeStockOwnershipPlanTotalStockBasedCompensation">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NonoperatingAssetRelatedIncomeOtherNet">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="NonoperatingAssetRelatedIncomeOtherNet_OneYearDelta">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="OtherNoncurrentLiabilitiesFuturePayments">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccountingPoliciesCostSales">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="AccountingPoliciesProductWarranty">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#stringItemType"/>
+   </rdf:Property>
+   <rdf:Property rdf:about="LongLivedAssets">
+      <rdfs:subPropertyOf rdf:resource="http://www.xbrl.org/2003/instance#item"/>
+      <rdfs:range rdf:resource="http://www.xbrl.org/2003/instance#monetaryItemType"/>
+   </rdf:Property>
+   <owl:ObjectProperty rdf:about="any"/>
+   <owl:DatatypeProperty rdf:about="id"/>
+</rdf:RDF>
