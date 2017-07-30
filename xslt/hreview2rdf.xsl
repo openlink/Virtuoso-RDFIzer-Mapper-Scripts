@@ -31,8 +31,8 @@ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 xmlns:admin="http://webns.net/mvcb/"
 xmlns:h="http://www.w3.org/1999/xhtml"
 xmlns:owl="http://www.w3.org/2002/07/owl#"
-xmlns:review="http:/www.purl.org/stuff/rev#"
-xmlns:hrev="http:/www.purl.org/stuff/hrev#"
+xmlns:review="http://www.purl.org/stuff/rev#"
+xmlns:hrev="http://www.purl.org/stuff/hrev#"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 version="1.0">
 
